@@ -4,5 +4,9 @@ __pycache__
 # Virtual environment
 /env
 
+# SQLite database
+*.db
+*.db-journal
+
 # Extra files
 *.pdf
