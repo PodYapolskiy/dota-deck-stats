@@ -1,2 +1,38 @@
-{% extends "base.html" %}
+{% extends "bootstrap/base.html" %}
 
+{% block app_content %}
+    <h1>
+        Hello World!
+    </h1>
+    <a href="/parse/3">Parse</a>
+    <a href="/download_heroes">Download Heroes</a>
+    
+    <!-- <form method="post" action="index.html">
+        <input type="search">
+
+    </form> -->
+
+    <div class="dropdown-menu dropdown-menu-dark border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden" style="width: 280px;">
+        <form class="p-2 mb-2 bg-dark border-bottom border-dark">
+          <input type="search" class="form-control form-control-dark" autocomplete="false" placeholder="Type to filter...">
+        </form>
+        <ul class="list-unstyled mb-0">
+          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+            <span class="d-inline-block bg-success rounded-circle" style="width: .5em; height: .5em;"></span>
+            Action
+          </a></li>
+          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+            <span class="d-inline-block bg-primary rounded-circle" style="width: .5em; height: .5em;"></span>
+            Another action
+          </a></li>
+          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+            <span class="d-inline-block bg-danger rounded-circle" style="width: .5em; height: .5em;"></span>
+            Something else here
+          </a></li>
+          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+            <span class="d-inline-block bg-info rounded-circle" style="width: .5em; height: .5em;"></span>
+            Separated link
+          </a></li>
+        </ul>
+    </div>
+{% endblock %}

@@ -51,8 +51,11 @@ def run_app():
 
 
 # Setting up 2 threads: Flask app and public matches loader
-flask_thread = Thread(target=run_app)
-loader_thread = Thread(target=loader)
+# flask_thread = Thread(target=run_app)
+# loader_thread = Thread(target=loader)
 
-flask_thread.start()
-loader_thread.start()
+# flask_thread.start()
+# loader_thread.start()
+
+
+app.run(host='127.0.0.1', port=5000, debug=True)
