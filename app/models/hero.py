@@ -11,4 +11,4 @@ class Hero(db.Model):
     roles = db.Column(db.String(50))
 
     def __repr__(self) -> str:
-        return f'<object Hero(\n\tid: {self.id},\n\tname: {self.name}\n)>'
+        return f'<object Hero(id: {self.id}, name: {self.name})>'
