@@ -1,31 +1,100 @@
 from app import app, db
 from flask import render_template, url_for, redirect, request
+
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from app.models.hero import Hero
 from app.models.match import Match
+from app.models.info import Info
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
-    response: list = requests.get("https://api.opendota.com/api/publicMatches").json()
-    # print(len(response))  # 100
-    # print(json.dumps(response[0], indent=2, ensure_ascii=False))
+    if request.method == "GET":
+        response: list = requests.get("https://api.opendota.com/api/publicMatches").json()
+        # print(len(response))  # 100
+        # print(json.dumps(response[0], indent=2, ensure_ascii=False))
+        
+        # print(response[0]["radiant_team"].replace(",", " "))
+        
+        # # Convert Unix-time to datetime type
+        # start_time = response[0]["start_time"]
+        # start_time = datetime.utcfromtimestamp(start_time)
+        
+        # start_point = datetime.fromtimestamp(1638299315)
+        # print(start_point)
     
-    # print(response[0]["radiant_team"].replace(",", " "))
-    
-    # # Convert Unix-time to datetime type
-    # start_time = response[0]["start_time"]
-    # start_time = datetime.utcfromtimestamp(start_time)
-    
-    # start_point = datetime.fromtimestamp(1638299315)
-    # print(start_point)
- 
-    return render_template(
-        "home/index.html",
-    )
+        return render_template(
+            "home/index.html",
+        )
+    elif request.method == "POST":
+        data = dict(request.form)
+        print(json.dumps(data, indent=2))
+        
+        # Collected stats
+        stats = {
+            'matches': 0,
+            'wins': 0  # Team A wins
+        }
+        
+        team_a = set()
+        team_b = set()
+        for k, v in data.items():
+            #TODO: Проверка
+            
+            if v == '':  # Empty input
+                continue
+            
+            if v.isdigit():  # Hero id
+                hero = Hero.query.filter_by(id=int(v)).first()
+            else:  # Hero name
+                hero = Hero.query.filter_by(name=v).first()
+
+            if not hero:  # Hero = None
+                continue
+            
+            if k.count('A'):  # не равен ли hero None
+                team_a.add(str(hero.id))
+            else:
+                team_b.add(str(hero.id))
+        
+        # print(team_a, team_b)
+        
+        month_ago_time = datetime.now() - timedelta(days=30)  # Дата месяц назад
+        month_ago_time = int(month_ago_time.timestamp())
+        # print(month_ago_time)
+        
+        for match in Match.query.filter(Match.id > month_ago_time).all():
+            # print(match.id)
+            radiant_team: list = match.radiant_team.split()  # ['23', '11', '8', '30', '40']
+            dire_team: list = match.dire_team.split()  # ['1', '2', '4', '80', '9']
+            
+            #???  123 120
+            if radiant_team == ['123', '23', '71', '19', '37'] and dire_team == ['120', '106', '42', '88', '121']:
+                print(team_a, team_b)
+                print(radiant_team, dire_team)
+            
+            # Checks if both teams are subsets of publicMatch teams
+            if team_a.issubset(radiant_team) and team_b.issubset(dire_team):
+                if match.radiant_win:
+                    stats["wins"] += 1  # Increment counter when team_a is radiant_team and it's won 
+                stats["matches"] += 1  # Increment counter when both subsets are correct
+            # Another case
+            elif team_a.issubset(dire_team) and team_b.issubset(radiant_team):
+                if not match.radiant_win:
+                    stats["wins"] += 1  # Increment counter when team_a is dire_team and it's won
+                stats["matches"] += 1  # Increment counter when both subsets are correct
+            else:
+                continue
+            
+        print(stats)
+        
+        return render_template(
+            "home/index.html",
+            stats=stats
+        )
 
 '''
     # @app.route('/parse/<int:iters>')
@@ -100,16 +169,6 @@ def download_heroes():
     return redirect(url_for('index'))
 
 
-# TODO:
-@app.route('/', methods=["POST"])  # ('/stats', methods=["POST"])
-def return_stats():
-    """Возвращает статистику по матчам"""
-    data = request.json
-    
-    
-    return
-
-
 @app.route('/test/<int:start_time>')
 def test(start_time):
     
@@ -124,5 +183,10 @@ def test_2():
     import random
     random_match = random.choice(Match.query.all())
     print(random_match)
+    
+    month_ago_time = datetime.now() - timedelta(days=30)  # Дата месяц назад
+    month_ago_time = month_ago_time.timestamp()
+    for match in Match.query.filter(Match.id > month_ago_time).all():
+        print(match)
     
     return redirect(url_for('index'))
