@@ -2,9 +2,10 @@ import os
 
 
 class Config(object):
-	SECRET_KEY = os.environ.get('SECRET_KEY') or 'dmi1_!#e1-d2&al,sdop1k'
-
-	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:Et0_Porol-Postgresql@127.0.0.1:5432/basic_flask_project'
+	SECRET_KEY = os.environ.get('SECRET_KEY') or '123456789'
+ 
+	basedir = os.path.abspath(os.path.dirname(__file__))
+	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-	APP_NAME = os.environ.get('APP_NAME') or 'Dota Deck assistent'
+	APP_NAME = os.environ.get('APP_NAME') or 'Dota Deck Assistent'
