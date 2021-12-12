@@ -1,38 +1,130 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 
 {% block app_content %}
-    <h1>
-        Hello World!
+  <div class="container-fluid">
+    <h1 class="row justify-content-center">
+      Dota Deck Assistant
     </h1>
-    <a href="/parse/3">Parse</a>
-    <a href="/download_heroes">Download Heroes</a>
-    
-    <!-- <form method="post" action="index.html">
-        <input type="search">
 
-    </form> -->
-
-    <div class="dropdown-menu dropdown-menu-dark border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden" style="width: 280px;">
-        <form class="p-2 mb-2 bg-dark border-bottom border-dark">
-          <input type="search" class="form-control form-control-dark" autocomplete="false" placeholder="Type to filter...">
-        </form>
-        <ul class="list-unstyled mb-0">
-          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
-            <span class="d-inline-block bg-success rounded-circle" style="width: .5em; height: .5em;"></span>
-            Action
-          </a></li>
-          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
-            <span class="d-inline-block bg-primary rounded-circle" style="width: .5em; height: .5em;"></span>
-            Another action
-          </a></li>
-          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
-            <span class="d-inline-block bg-danger rounded-circle" style="width: .5em; height: .5em;"></span>
-            Something else here
-          </a></li>
-          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
-            <span class="d-inline-block bg-info rounded-circle" style="width: .5em; height: .5em;"></span>
-            Separated link
-          </a></li>
-        </ul>
+    <div class="row justify-content-center">
+      <a class="col-1 text-center" href="/download_heroes">Download Heroes</a>
     </div>
+    <br>
+    <br>
+
+    {#
+      <div>
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+              <input type="text" class="form-control" placeholder="Search for...">
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+
+          <div class="col-lg-6">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+      </div>
+    #}
+    
+    {# Form #}
+    <form id="form" method="post" action="/" class="container-fluid">
+      <div class="row mb-2 justify-content-around">
+        <div class="col-3 text-center">
+          <h3>ГЕРОИ КОМАНДЫ A</h3>
+        </div>
+        <div class="col-3 text-center">
+          <h3>ГЕРОИ КОМАНДЫ B</h3>
+        </div>
+      </div>
+
+      <div class="row mb-1 justify-content-around">
+        <div class="col-3">
+          <div class="input-group">
+            <span class="input-group-text">
+              {# <img src="{{ url_for('static'), filename='favicon.ico' }}" alt="?"> #}
+            </span>
+            <input type="text" class="form-control" placeholder="Выбор героя" name="A1" aria-label="A1">
+          </div>
+        </div>
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="B1" aria-label="B1">
+        </div>
+      </div>
+
+      <div class="row mb-1 justify-content-around">
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="A2" aria-label="A2">
+        </div>
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="B2" aria-label="B2">
+        </div>
+      </div>
+
+      <div class="row mb-1 justify-content-around">
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="A3" aria-label="A3">
+        </div>
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="B3" aria-label="B3">
+        </div>
+      </div>
+
+      <div class="row mb-1 justify-content-around">
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="A4" aria-label="A4">
+        </div>
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="B4" aria-label="B4">
+        </div>
+      </div>
+
+      <div class="row mb-3 justify-content-around">
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="A5" aria-label="A5">
+        </div>
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="Выбор героя" name="B5" aria-label="B5">
+        </div>
+      </div>
+
+      <div class="row mb-3 justify-content-around">
+        <div class="col-3"></div>
+        <div class="col-3 text-end">
+          <button type="submit" class="btn btn-primary">Статистика</button>
+      </div>
+    </form>
+
+    {% if matches_exist %}
+      <div class="container">
+        <div class="row mb-1 justify-content-around">
+          <div class="col-3">Всего матчей</div>
+          <div class="col-3">{{ matches }}</div>
+        </div>
+        
+        <div class="row mb-1 justify-content-around">
+          <div class="col-3">Побед команды A: {{ wins_a }}</div>
+          <div class="col-3">Побед команды B: {{ wins_b }}</div>
+        </div>
+
+        <div class="row mb-1 justify-content-around">
+          <div class="col-3">{{ wins_a_perc }}%</div>
+          <div class="col-3">{{ wins_b_perc }}%</div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if not matches_exist %}
+      <h2 class="text-center">No matches</h2>
+    {% endif %}
+  </div>
 {% endblock %}
