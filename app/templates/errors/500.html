@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="content" align="center">
+        <p>
+            <img src="{{ url_for('static', filename='img/error/500.png') }}" alt="">
+        </p>
+        <h4><a href="{{ url_for('index') }}">Перейти к главной странице</a></h4>
+    </div>
+{% endblock %}
