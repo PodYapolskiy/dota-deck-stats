@@ -12,32 +12,8 @@
     <br>
     <br>
 
-    {#
-      <div>
-        <div class="row mb-5">
-          <div class="col-lg-6">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-              <input type="text" class="form-control" placeholder="Search for...">
-            </div><!-- /input-group -->
-          </div><!-- /.col-lg-6 -->
-
-          <div class="col-lg-6">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div><!-- /input-group -->
-          </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-      </div>
-    #}
-    
     {# Form #}
-    <form id="form" method="post" action="/" class="container-fluid">
+    <form id="form" class="container-fluid">
       <div class="row mb-2 justify-content-around">
         <div class="col-3 text-center">
           <h3>ГЕРОИ КОМАНДЫ A</h3>
@@ -51,63 +27,108 @@
         <div class="col-3">
           <div class="input-group">
             <span class="input-group-text">
-              {# <img src="{{ url_for('static'), filename='favicon.ico' }}" alt="?"> #}
+              <img class="hero A1" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
-            <input type="text" class="form-control" placeholder="Выбор героя" name="A1" aria-label="A1">
+            <input onchange="onchangeHandler(this, 'A1')" type="text" class="form-control" placeholder="Выбор героя" name="A1" value="{{ inputs['A1'] }}" aria-label="A1">
           </div>
         </div>
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="B1" aria-label="B1">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero B1" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'B1')" type="text" class="form-control" placeholder="Выбор героя" name="B1" value="{{ inputs['B1'] }}" aria-label="B1">
+          </div>
         </div>
       </div>
 
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="A2" aria-label="A2">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero A2" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'A2')" type="text" class="form-control" placeholder="Выбор героя" name="A2" value="{{ inputs['A2'] }}" aria-label="A2">
+          </div>
         </div>
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="B2" aria-label="B2">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero B2" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'B2')" type="text" class="form-control" placeholder="Выбор героя" name="B2" value="{{ inputs['B2'] }}" aria-label="B2">
+          </div>
         </div>
       </div>
 
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="A3" aria-label="A3">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero A3" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'A3')" type="text" class="form-control" placeholder="Выбор героя" name="A3" value="{{ inputs['A3'] }}" aria-label="A3">
+          </div>
         </div>
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="B3" aria-label="B3">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero B3" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'B3')" type="text" class="form-control" placeholder="Выбор героя" name="B3" value="{{ inputs['B3'] }}" aria-label="B3">
+          </div>
         </div>
       </div>
 
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="A4" aria-label="A4">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero A4" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'A4')" type="text" class="form-control" placeholder="Выбор героя" name="A4" value="{{ inputs['A4'] }}" aria-label="A4">
+          </div>
         </div>
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="B4" aria-label="B4">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero B4" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'B4')" type="text" class="form-control" placeholder="Выбор героя" name="B4" value="{{ inputs['B4'] }}" aria-label="B4">
+          </div>
         </div>
       </div>
 
       <div class="row mb-3 justify-content-around">
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="A5" aria-label="A5">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero A5" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'A5')" type="text" class="form-control" placeholder="Выбор героя" name="A5" value="{{ inputs['A5'] }}" aria-label="A5">
+          </div>
         </div>
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="Выбор героя" name="B5" aria-label="B5">
+          <div class="input-group">
+            <span class="input-group-text">
+              <img class="hero B5" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+            </span>
+            <input onchange="onchangeHandler(this, 'B5')" type="text" class="form-control" placeholder="Выбор героя" name="B5" value="{{ inputs['B5'] }}" aria-label="B5">
+          </div>
         </div>
       </div>
 
       <div class="row mb-3 justify-content-around">
         <div class="col-3"></div>
         <div class="col-3 text-end">
-          <button type="submit" class="btn btn-primary">Статистика</button>
+          <button onclick="onsubmitHandler()" type="button" class="btn btn-primary">Статистика</button>
       </div>
     </form>
 
     {% if matches_exist %}
       <div class="container">
         <div class="row mb-1 justify-content-around">
-          <div class="col-3">Всего матчей</div>
+          <div class="col-3">Матчей найдено:</div>
           <div class="col-3">{{ matches }}</div>
         </div>
         
@@ -117,9 +138,23 @@
         </div>
 
         <div class="row mb-1 justify-content-around">
-          <div class="col-3">{{ wins_a_perc }}%</div>
-          <div class="col-3">{{ wins_b_perc }}%</div>
+          <div class="col-3">Шанс победы команды А: {{ wins_a_perc }}%</div>
+          <div class="col-3">Шанс победы команды B: {{ wins_b_perc }}%</div>
         </div>
+
+        {# https://www.jqueryscript.net/blog/best-circular-radial-progress-bar.html 
+        <div class="c100 p{{ wins_a }} p70 big">
+          <span>50%</span>
+          <div class="slice">
+            <div class="bar"></div>
+            <div class="fill"></div>
+          </div>
+          <div class="slice">
+            <div class="bar"></div>
+            <div class="fill"></div>
+          </div>
+        </div>
+        #}
       </div>
     {% endif %}
 
