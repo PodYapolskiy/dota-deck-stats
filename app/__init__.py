@@ -7,8 +7,7 @@ Bootstrap docs - https://getbootstrap.com/docs/5.1/getting-started/introduction/
 2. Параллельная с этим загрузка на сервер данных о матчах
 
 Расчитать сколько места займёт хранение всей инфы
-
-! Герои могут быть выбраны как со стороны radiant, так и dire
+! attack type -> bool
 """
 from flask import Flask
 from config import Config
@@ -29,12 +28,13 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
+# Errorhandlers and favicon
 from app import routes
-from app import errors  #? Возможно должны быть после controllers
+from app import errors
 
-# Controllers
+# Controllers and Loader
 from app.controllers import home
-from app.controllers.loader import loader  # Loader
+from app.controllers.loader import loader
 
 
 # os.remove('app.db')  #? Временно
@@ -50,12 +50,17 @@ def run_app():
     app.run(host='127.0.0.1', port=5000, debug=False)
 
 
-# Setting up 2 threads: Flask app and public matches loader
-# flask_thread = Thread(target=run_app)
-# loader_thread = Thread(target=loader)
+import sys
+if '--all' in sys.argv:
+    # # Setting up 2 threads: Flask app and public matches loader
+    flask_thread = Thread(target=run_app)
+    loader_thread = Thread(target=loader)
 
-# flask_thread.start()
-# loader_thread.start()
+    flask_thread.start()
+    loader_thread.start()
+else:
+    app.run(host='127.0.0.1', port=5000, debug=True)
 
 
-app.run(host='127.0.0.1', port=5000, debug=True)
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port=5000, debug=True)
