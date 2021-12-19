@@ -91,8 +91,8 @@ def index():
     )
 
 
-@app.route('/download_heroes')
-def download_heroes():
+@app.route('/update_heroes')
+def update_heroes():
     """Download all info about heroes"""
     
     heroes: list = requests.get("https://api.opendota.com/api/heroes").json()
