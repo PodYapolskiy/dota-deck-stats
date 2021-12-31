@@ -23,6 +23,15 @@ class TestRequests(unittest.TestCase):
 
         self.assertEqual(len(matches), 100)
 
+    def test_ids_order(self):
+        url = "https://api.opendota.com/api/publicMatches"
+        matches = requests.get(url).json()
+        
+        pre_match = matches[0]
+        for match in matches[1:]:
+            self.assertGreater(pre_match["match_id"], match["match_id"])
+            pre_match = match
+            
 
 if __name__ == "__main__":
     unittest.main()
