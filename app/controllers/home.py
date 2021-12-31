@@ -7,13 +7,15 @@ from datetime import datetime, timedelta
 
 from app.models.hero import Hero
 from app.models.match import Match
-from app.models.info import Info
 
 
 @app.route('/', methods=["GET"])
 def index():
     # https://question-it.com/questions/2965022/flask-render_template-ne-vyzyvaetsja-posle-klientskogo-post-s-dannymi
     # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-ru
+    
+    # Matches in database
+    matches_count = db.session.query(Match).count()
     
     # All inputs in form
     inputs = {f'A{i}': '' for i in range(1, 6)}
@@ -78,16 +80,19 @@ def index():
                 wins_b=stats["matches"] - stats["wins"],
                 wins_b_perc=f"{round(100 * (1 - stats['wins'] / stats['matches']), 2)}",
                 matches=stats["matches"],
+                matches_count=matches_count
             )
         return render_template(
             "home/index.html",
             matches_exist=False,
-            inputs=inputs
+            inputs=inputs,
+            matches_count=matches_count
         )
     
     return render_template(
         "home/index.html",
-        inputs=inputs
+        inputs=inputs,
+        matches_count=matches_count
     )
 
 

@@ -127,8 +127,14 @@
     </form>
 
     {% if matches_exist %}
-      <div class="container mt-5">
-        <h3 class="mb-3 text-white text-center">Статистика</h3>
+      <div class="container mt-3">
+        <h3 class="text-white text-center">Статистика</h3>
+        <div class="row justify-content-around">
+          <div class="text-center text-white fs-5">
+            Матчей всего: <span class="fw-bold">{{ matches_count }}</span>
+          </div>
+        </div>
+
         <div class="row mb-3 justify-content-around">
           <div class="text-center text-white fs-5">
             Матчей найдено: <span class="fw-bold">{{ matches }}</span>
@@ -172,7 +178,13 @@
     {% endif %}
 
     {% if not matches_exist %}
-      <h2 class="text-white text-center mt-3">No matches</h2>
+      <h3 class="text-white text-center">Статистика</h3>
+      <div class="row justify-content-around">
+        <div class="text-center text-white fs-5">
+          Матчей всего: <span class="fw-bold">{{ matches_count }}</span>
+        </div>
+      </div>
+      <h5 class="text-white text-center mt-5">Матчи с такими составами не найдены</h5>
     {% endif %}
   </div>
 {% endblock %}
