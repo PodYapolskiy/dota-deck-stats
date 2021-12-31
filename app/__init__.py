@@ -2,12 +2,7 @@
 Flask-Bootstrap docs - https://pythonhosted.org/Flask-Bootstrap/bootstrap2.html
 Bootstrap docs - https://getbootstrap.com/docs/5.1/getting-started/introduction/
 
-Нужно
-1. Доступ к сайту и визуализация результата
-2. Параллельная с этим загрузка на сервер данных о матчах
-
 Расчитать сколько места займёт хранение всей инфы
-! attack type -> bool
 """
 from flask import Flask
 from config import Config
@@ -37,13 +32,17 @@ from app.controllers import home
 from app.controllers.loader import loader
 
 
-# os.remove('app.db')  #? Временно
 db.create_all()
 
 # Models
 from app.models.match import Match
 from app.models.hero import Hero
 from app.models.info import Info
+
+# If info doesn't exist
+if not Info.query.first():
+    db.session.add(Info(min_match_id=None, max_match_id=None, reached_2020=False))
+    db.session.commit()
 
 
 def run_app():
