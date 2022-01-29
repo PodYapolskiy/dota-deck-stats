@@ -3,12 +3,9 @@
 {% block app_content %}
   <div class="container-fluid">
     {# "Navbar" #}
-    <div class="row mt-3 mb-5 justify-content-around align-items-center">
-      <div class="col-3 text-white">
+    <div class="row mt-3 mb-5 justify-content-center align-items-center">
+      <div class="text-white text-center">
         <a href="#" class="h1 fw-bold text-white text-decoration-none">Dota Deck Stats</a>
-      </div>
-      <div class="col-3 text-end">
-        <a class="col-1 text-white text-decoration-none" href="/update_heroes">Update Heroes</a>
       </div>
     </div>
 
@@ -26,17 +23,17 @@
       {# #333333  #27282d - инпуты #212226 - фон #}
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group A1">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero A1" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'A1')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="A1" value="{{ inputs['A1'] }}" aria-label="A1">
           </div>
         </div>
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group B1">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero B1" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'B1')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="B1" value="{{ inputs['B1'] }}" aria-label="B1">
           </div>
@@ -45,17 +42,17 @@
 
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group A2">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero A2" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'A2')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="A2" value="{{ inputs['A2'] }}" aria-label="A2">
           </div>
         </div>
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group B2">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero B2" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'B2')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="B2" value="{{ inputs['B2'] }}" aria-label="B2">
           </div>
@@ -64,17 +61,17 @@
 
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group A3">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero A3" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'A3')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="A3" value="{{ inputs['A3'] }}" aria-label="A3">
           </div>
         </div>
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group B3">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero B3" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'B3')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="B3" value="{{ inputs['B3'] }}" aria-label="B3">
           </div>
@@ -83,17 +80,17 @@
 
       <div class="row mb-1 justify-content-around">
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group A4">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero A4" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'A4')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="A4" value="{{ inputs['A4'] }}" aria-label="A4">
           </div>
         </div>
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group B4">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero B4" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'B4')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="B4" value="{{ inputs['B4'] }}" aria-label="B4">
           </div>
@@ -102,17 +99,17 @@
 
       <div class="row mb-3 justify-content-around">
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group A5">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero A5" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'A5')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="A5" value="{{ inputs['A5'] }}" aria-label="A5">
           </div>
         </div>
         <div class="col-3">
-          <div class="input-group">
+          <div class="input-group B5">
             <span class="input-group-text bg-dark border-secondary">
-              <img class="hero B5" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
+              <img class="hero" src="{{ url_for('static', filename='img/alt.jpg') }}" alt="hero">
             </span>
             <input onchange="onchangeHandler(this, 'B5')" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Выбор героя" name="B5" value="{{ inputs['B5'] }}" aria-label="B5">
           </div>
