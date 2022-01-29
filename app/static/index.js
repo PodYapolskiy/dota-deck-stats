@@ -1,7 +1,144 @@
 // http://wc3.3dn.ru/publ/dota2/raznoe_dota_2/icons_heroes_dota_2/52-1-0-676
 // https://liquipedia.net/dota2/Void_Spirit
 // https://dota2.fandom.com/wiki/Heroes
-const HEROES = {
+const HEROES_NAMES = {
+  Earthshaker: ['шейкер', 'earthshaker'],
+  Sven: ['свен', 'sven'],
+  Tiny: ['тини', 'tiny'],
+  Kunkka: ['кунка', 'kunkka'],
+  Beastmaster: ['бист', 'бистмастер', 'beastmaster'],
+  'Dragon Knight': ['дк', 'драгон кнайт', 'dragon knight'],
+  Clockwerk: ['клок', 'клокверк', 'clockwerk'],
+  Omniknight: ['омник', 'omniknight'],
+  Huskar: ['хускар', 'хуск', 'huskar'],
+  Alchemist: ['aлхимик', 'алхим','alchemist'],
+  Brewmaster: ['панда', 'brewmaster'],
+  'Treant Protector': ['трент', 'дерево', 'treant protector'],
+  Io: ['ио', 'висп', 'io'],
+  'Centaur Warrunner': ['кентавр', 'кент', 'centaur warrunner'],
+  Timbersaw: ['тимбер', 'timbersaw'],
+  Bristleback: ['брист', 'бристлбек', 'bristleback'],
+  Tusk: ['туск', 'тускар', 'tusk'],
+  'Elder Titan': ['титан', 'элдер титан', 'elder titan'],
+  'Legion Commander': ['лега', 'легионка', 'legion commander'],
+  'Earth Spirit': ['земеля', 'землепанда', 'earth spirit'],
+  Phoenix: ['феникс', 'phoenix'],
+  Marci: ['марси', 'marci'],
+  Mars: ['марс', 'mars'],
+  Dawnbreaker: ['дб', 'dawnbreaker'],
+  Snapfire: ['бабка', 'snapfire'],
+
+  // Agility
+  'Anti-Mage': ['ам', 'антимаг', 'anti-mage'],
+  'Drow Ranger': ['дровка', 'тракса', 'drow ranger'],
+  Juggernaut: ['джага', 'джагер', 'juggernaut'],
+  Mirana: ['мирана', 'mirana'],
+  Morphling: ['морф', 'morhling'],
+  'Phantom Lancer': ['пл', 'лансер', 'фантом лансер', 'phantom_Lancer'],
+  'Vengeful Spirit': ['венга', 'vengeful_Spirit'],
+  Riki: ['рики', 'rikimaru'],
+  Sniper: ['снайпер', 'снайп', 'sniper'],
+  'Templar Assassin': ['та', 'темпларка', 'ланая', 'templar assassin'],
+  Luna: ['луна', 'luna'],
+  'Bounty Hunter': ['бх', 'bounty hunter'],
+  Ursa: ['урса', 'ursa'],
+  Gyrocopter: ['гиро', 'гирокоптер', 'gyrocopter'],
+  'Lone Druid': ['друид', 'lone druid'],
+  'Naga Siren': ['нага', 'naga siren'],
+  'Troll Warlord': ['тролль', 'troll warlord'],
+  'Ember Spirit': ['эмбер', 'эмбер спирит', 'ember spirit'],
+  'Arc Warden': ['арк', 'варден', 'арк варден', 'arc', 'arc warden'],
+  Hoodwink: ['белка', 'худвик', 'hoodwink'],
+  'Monkey King': ['мк', 'monkey king'],
+  Pangolier: ['панго', 'панголиер', 'pangolier'],
+
+  // Intelligence
+  'Crystal Maiden': ['цм', 'цмка', 'кристалка', 'crystal maiden'],
+  Puck: ['пак', 'puck'],
+  'Storm Spirit': ['шторм', 'storm spirit'],
+  Windranger: ['вр', 'windrunner'],
+  Zeus: ['зевс', 'zeus'],
+  Lina: ['лина', 'lina'],
+  'Shadow Shaman': ['шд', 'демон', 'shadow shaman'],
+  Tinker: ['тинкер', 'tinker'],
+  "Nature's Prophet": ['фура', 'фурион', 'furion'],
+  Enchantress: ['энча', 'коза', 'enchantress'],
+  Jakiro: ['джакиро', 'jakiro'],
+  Chen: ['чен', 'chen'],
+  Silencer: ['сало', 'silencer'],
+  'Ogre Magi': ['огр', 'огр маг', 'ogre magi'],
+  Rubick: ['рубик', 'rubick'],
+  Disruptor: ['дизраптор', 'disruptor'],
+  'Keeper of the Light':
+    ['котл', 'котел', 'keeper of the light'],
+  'Skywrath Mage': ['петух', 'skywrath'],
+  Oracle: ['оракл', 'оракул', 'oracle'],
+  Techies: ['течис', 'минер', 'techies'],
+  'Dark Willow': ['дс', 'дарксир', 'dark willow'],
+  'Void Spirit': ['войд', 'воид', 'void spirit'],
+
+  // |--------------------------------------------------  Dire  --------------------------------------------------|
+  // Strength
+  Axe: ['акс', 'axe'],
+  Pudge: ['падж', 'пудж', 'pudge'],
+  'Sand King': ['ск', 'сенд кинг', 'sand king'],
+  Slardar: ['слардар', 'slardar'],
+  Tidehunter: ['тайд', 'tidehunter'],
+  'Wraith King': ['вк', 'wraith king', 'skeleton king'],
+  Lifestealer: ['гуля', 'lifestealer'],
+  'Night Stalker': ['баланар', 'night stalker', 'balanar'],
+  Doom: ['дум', 'doom', 'doom bringer'],
+  'Spirit Breaker': ['бара', 'spirit breaker', 'barathrum'],
+  Lycan: ['ликан', 'lycan', 'lycanthrope'],
+  'Chaos Knight': ['цк', 'чаос', 'chaos knight'],
+  Undying: ['зомби', 'андаинг', 'undying'],
+  Magnus: ['магнус', 'magnataur'],
+  Abaddon: ['абадон', 'абаддон', 'abaddon'],
+  Underlord: ['питлорд', 'underlord'],
+
+  // Agility
+  Bloodseeker: ['сикер', 'блуд', 'блудсикер', 'bloodseeker'],
+  'Shadow Fiend': ['сф', 'shadow fiend'],
+  Razor: ['разор', 'razor', 'razzor'],
+  Venomancer: ['веник', 'веномансер', 'venomancer'],
+  'Faceless Void': ['войд', 'воид', 'faceless void'],
+  'Phantom Assassin': ['па', 'мортра', 'фантомка', 'phantom assassin'],
+  Viper: ['вайпер', 'viper'],
+  Clinkz: ['клинкз', 'clinkz'],
+  Broodmother: ['бруда', 'broodmother'],
+  Weaver: ['вивер', 'weaver'],
+  Spectre: ['спектра', 'spectre'],
+  Meepo: ['мипо', 'meepo'],
+  'Nyx Assassin': ['никс', 'nyx assassin'],
+  Slark: ['сларк', 'slark'],
+  Medusa: ['медуза', 'medusa'],
+  Terrorblade: ['тб', 'терор', 'terrorblade'],
+
+  // Intelligence
+  Bane: ['бейн', 'беин', 'bane'],
+  Lich: ['лич', 'lich'],
+  Lion: ['лион', 'lion'],
+  'Witch Doctor': ['вич доктор', 'вд', 'witch doctor'],
+  Enigma: ['энигма', 'enigma'],
+  Necrophos: ['некр', 'necrophos'],
+  Warlock: ['варлок', 'warlock'],
+  'Queen of Pain': ['квопа', 'queen of pain'],
+  'Death Prophet': ['банша', 'дп', 'death prophet'],
+  Pugna: ['пугна', 'pugna'],
+  Dazzle: ['дазл', 'dazzle'],
+  Leshrac: ['лешрак', 'leshrac'],
+  'Dark Seer': ['дс', 'дарксир', 'dark seer'],
+  Batrider: ['батраидер', 'батрайдер', 'batrider'],
+  'Ancient Apparition': ['аппарат', 'аа', 'aa', 'ancient apparition'],
+  Invoker: ['инвок', 'инвокер', 'invoker'],
+  'Outworld Destroyer': ['од', 'outworld destroyer'],
+  'Shadow Demon': ['шд', 'демон', 'shadow demon'],
+  Visage: ['визаж', 'visage'],
+  'Winter Wyvern': ['виверна', 'winter wyvern'],
+  Grimstroke: ['гримстрок', 'грим', 'grimstroke'],
+}
+
+const HEROES_LINKS = {
   // |--------------------------------------------------  Radiant  --------------------------------------------------|
   // Strength
   Earthshaker: 'http://wc3.3dn.ru/Dota2/Heroes/Earthshaker.jpg',
@@ -157,10 +294,25 @@ function onsubmitHandler() {
 }
 
 function onchangeHandler(e, inputName) {
-  const img = document.querySelector(`.${inputName}`)
+  const inputGroup = document.querySelector(`.${inputName}`)
 
-  if (HEROES.hasOwnProperty(e.value)) {
-    img.src = HEROES[e.value]
+  // If heroName exists change input to main name
+  let heroInput = e.value.trim()
+  let heroExists = false
+  for (let heroName of Object.keys(HEROES_NAMES)) {
+    if (HEROES_NAMES[heroName].includes(heroInput.toLowerCase())) {
+        heroInput = heroName
+        heroExists = true
+        // Change text in the input
+        const input = inputGroup.querySelector(`input`)
+        input.value = heroInput
+        break
+    }
+  }
+  // Change image src
+  const img = inputGroup.querySelector('img')
+  if (heroExists) {
+    img.src = HEROES_LINKS[heroInput]
   } else {
     img.src = 'static/img/alt.jpg'
   }
@@ -170,13 +322,11 @@ function onchangeHandler(e, inputName) {
 window.onload = function () {
   const inputs = document.querySelectorAll('.form-control')
 
-  // console.log("Onload")
+  // Change img's src if it's a property of HEROES_LINKS
   for (let input of inputs) {
-    // console.log(input.value)
-
-    if (input.value !== '' && HEROES.hasOwnProperty(input.value)) {
-      const img = document.querySelector(`.${input.name}`)
-      img.src = HEROES[input.value]
+    if (input.value !== '' && HEROES_LINKS.hasOwnProperty(input.value)) {
+      const img = document.querySelector(`.${input.name} img`)
+      img.src = HEROES_LINKS[input.value]
     }
   }
 }
