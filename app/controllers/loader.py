@@ -1,4 +1,4 @@
-from app import app, db
+from app import db
 from app.models.info import Info
 from app.models.match import Match
 

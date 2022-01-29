@@ -96,30 +96,6 @@ def index():
     )
 
 
-@app.route('/update_heroes')
-def update_heroes():
-    """Download all info about heroes"""
-    
-    heroes: list = requests.get("https://api.opendota.com/api/heroes").json()
-    
-    for hero in heroes:
-        if not Hero.query.filter_by(id=hero["id"]).first():
-            h = Hero(
-                id=hero["id"],
-                name=hero["localized_name"],
-                attribute=hero["primary_attr"],
-                attack_type=hero["attack_type"],
-                roles=' '.join(hero["roles"])
-            )
-            try:
-                db.session.add(h)
-                db.session.commit()
-            except Exception as e:
-                print(f"Excpection while downloading {hero['id']}")
-
-    return redirect(url_for('index'))
-
-
 @app.route('/test/<int:start_time>')
 def test(start_time):
     
